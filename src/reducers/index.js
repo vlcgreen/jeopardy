@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import reducerTemplate from './reducerTemplate'
+import categoryReducer from './categoryReducer'
 
 let rootReducer = combineReducers({
     
-    template: reducerTemplate
+    categories: categoryReducer
 });
 
 export default rootReducer

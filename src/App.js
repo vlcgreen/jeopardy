@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Settings from './components/Settings'
+import Categories from './components/Categories'
 
 const App = () => {
+
+
   return (
     <>
-      Home page
+      Trivia App <br />
+      <Settings />
+      <Categories />
     </>
   )
 }

@@ -50,8 +50,6 @@ ReactDOM.render(
         <BaseLayout>
         <Switch>
           <Route exact path="/" component={App} />
-          <Route exact path="/hooks" component={Hooks} />
-          <Route exact path="/classes" component={Classes} />
         </Switch>
         </BaseLayout>
       </Router>

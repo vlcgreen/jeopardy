@@ -1,2 +1,3 @@
 
-export const INCREMENT = "INCREMENT"
+export const SET_CATEGORY = "SET_CATEGORY"
+export const UPDATE_SELECTED = "UPDATE_SELECTED"

@@ -4,3 +4,40 @@ body {
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	padding-bottom:100px;
 }
+
+.box {
+	background-color: lightgrey;
+	color: #fff;
+	border-radius: 5px;
+	padding: 20px;
+	font-size: 150%;
+	align-content: center;
+  }
+  
+  .wrapper {
+	width: 90vw;
+	display: grid;
+	grid-gap: 1vw;
+	grid-template-columns: repeat(5, 17vw);
+	grid-template-rows: repeat(5, 17vw);
+	grid-auto-flow: column;
+  }
+
+  .row {
+	  text-align: center;
+  }
+
+  .titleWrap {
+	width: 90vw;
+	display: grid;
+	grid-gap: 1vw;
+	grid-template-columns: 17vw;
+	grid-template-rows: 7vw;
+	grid-auto-flow: column;
+  }
+  .titleEach {
+	align-content:center;
+	padding: 20px;
+	border-radius: 5px;
+	font-size: 150%;
+  }

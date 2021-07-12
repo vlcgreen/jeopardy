@@ -32,6 +32,7 @@ class Categories extends Component {
         console.log(this.state.selCategories)
         event.preventDefault();
         this.props.update_selected(this.state.selCategories)
+        this.props.history.push('/game');
       }
 
 
@@ -41,14 +42,14 @@ class Categories extends Component {
   render() {
     return (
       <>
-                <h1>TESTING DROPDOWN FOR SELECTING CATEGORIES</h1>
+                <h1>Choose Your Categories</h1>
         <form onSubmit={this.handleSubmit}>
             
-          <strong>Select Category:</strong>
+          <strong>Select five categories:</strong><br/>
           <select multiple onChange={this.handleChange.bind(this)}>
            {
             this.props.question_category.map(item => (
-               <option value={item.id}>{item.title}</option>
+               <option type="checkbox" value={item.id}>{item.title}</option>
              ))
           }
           </select>
@@ -72,5 +73,5 @@ const mapDispatchToProps = dispatch => {
     update_selected: (data)=> dispatch(updateSelectedCategories(data))
   }
 }
-console.log(connect)
+
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

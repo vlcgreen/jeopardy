@@ -8,6 +8,8 @@ import BaseLayout from './components/layout/BaseLayout';
 import reducer from './reducers'
 import Hooks from './components/Hooks'
 import Classes from './components/Classes'
+import Categories from './components/Categories'
+import Gameboard from './components/Gameboard'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const saveToLocalStorage = (reduxGlobalState) => {
@@ -50,6 +52,8 @@ ReactDOM.render(
         <BaseLayout>
         <Switch>
           <Route exact path="/" component={App} />
+          <Route path="/gamesettings" component={Categories} />
+          <Route path="/game" component={Gameboard} />
         </Switch>
         </BaseLayout>
       </Router>

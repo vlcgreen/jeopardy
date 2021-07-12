@@ -9,10 +9,10 @@ const BaseLayout = (props) => {
               <Link to="/">Home Page</Link>
           </li>
           <li>
-              <Link to="/hooks">Hooks Page</Link>
+              <Link to="/gamesettings">Category Selection Page</Link>
           </li>
           <li>
-              <Link to="/classes">Classes Page</Link>
+              <Link to="/game">Gameboard Page</Link>
           </li>
       </ul>
 

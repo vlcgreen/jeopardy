@@ -50,7 +50,7 @@ align-content:center;
 padding: 30px;
 border-radius: 15px;
 font-size: 100%;
-color: #FFE817;
+color: white;
 }
 
 .top-header {
@@ -70,10 +70,12 @@ font-size: 2em;
 font-weight:bold;
 margin-left: 0.2em;
 }
+
 #card {
 	transform-style: preserve-3d;
 	transition: transform 1s;
-	color: white;
+	color: #FFE817;
+	font-weight: bold;
   }
 #card figure {
 	margin: 0;

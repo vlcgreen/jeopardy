@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {render} from 'react-dom';
-import {updateSelectedCategories} from '../actions/categoryActions'
+import {updateSelectedCategories, updateScore} from '../actions/categoryActions'
 
 class Categories extends Component {
     constructor(){
         super();
         this.state = {
-          selCategories: []
+          selCategories: [],
+          score: 0
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -25,6 +26,7 @@ class Categories extends Component {
         }
       
         this.setState({selCategories: selected});
+        this.setState({score: 0})
       }
           
       handleSubmit(event) {
@@ -32,6 +34,7 @@ class Categories extends Component {
         console.log(this.state.selCategories)
         event.preventDefault();
         this.props.update_selected(this.state.selCategories)
+        this.props.update_score(this.state.score)
         this.props.history.push('/game');
       }
 
@@ -42,7 +45,7 @@ class Categories extends Component {
   render() {
     return (
       <>
-                <h1>Choose Your Categories</h1>
+                <h1>Let's Play a Game</h1>
         <form onSubmit={this.handleSubmit}>
             
           <strong>Select five categories:</strong><br/>
@@ -64,13 +67,15 @@ class Categories extends Component {
 // useSelector => mapStateToProps
 const mapStateToProps = state => {
   return {
-      question_category: state.categories.question_category
+      question_category: state.categories.question_category,
+      score: state.categories.score
   }
 }
 // useDispatch => mapDispatchToProps
 const mapDispatchToProps = dispatch => {
   return {
-    update_selected: (data)=> dispatch(updateSelectedCategories(data))
+    update_selected: (data)=> dispatch(updateSelectedCategories(data)),
+    update_score: (score)=> dispatch(updateScore(score))
   }
 }
 

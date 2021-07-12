@@ -46,23 +46,30 @@ var timesClicked = 0
 let handleClick = (e) =>{
   timesClicked++
 
-    if(timesClicked%2==0){
-    let userAnswer = window.prompt(`Enter answer:`, "")
-      let answer = e.target.value
-    if (userAnswer.toLowerCase() == answer.toLowerCase()) {
-      alert("Correct");
-      dispatch(updateScore(100))
-    }
-    else {
-      alert("Sorry. Incorrect")
-
-    }
+  if(timesClicked > 50){
+    alert(`Game over. Your score is ${score}`);
+    this.props.history.push('/');
   }
   else{
-    e.target.classList.toggle("flipped");
-    console.log(e.target.value)
-  }
-  }
+
+    if(timesClicked%2==0){
+      let userAnswer = window.prompt(`Enter answer:`, "")
+        let answer = e.target.value
+      if (userAnswer.toLowerCase() == answer.toLowerCase()) {
+        alert("Correct");
+        dispatch(updateScore(100))
+      }
+      else {
+        alert("Sorry. Incorrect")
+        
+      }
+    }
+    else{
+      e.target.classList.toggle("flipped");
+      console.log(e.target.value)
+    } //end of regular if statement
+  } //end of game-ending check
+  } //end of clickhandle
 
 
 

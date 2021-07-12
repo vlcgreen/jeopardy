@@ -9,6 +9,7 @@
  */
 
 
+
 import {SET_CATEGORY, UPDATE_SELECTED, UPDATE_SCORE} from './types'
 
 export const setCategory = (optionsData) => {

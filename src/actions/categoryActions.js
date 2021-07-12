@@ -9,7 +9,7 @@
  */
 
 
-import {SET_CATEGORY, UPDATE_SELECTED} from './types'
+import {SET_CATEGORY, UPDATE_SELECTED, UPDATE_SCORE} from './types'
 
 export const setCategory = (optionsData) => {
     return {
@@ -21,5 +21,11 @@ export const updateSelectedCategories = (selectedData) => {
     return {
         type: UPDATE_SELECTED,
         data: selectedData
+    }
+};
+export const updateScore = (scoreData) => {
+    return {
+        type: UPDATE_SCORE,
+        data: scoreData
     }
 };

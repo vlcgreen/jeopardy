@@ -8,8 +8,6 @@ import {setCategory} from '../actions/categoryActions';
 const Settings = () => {
     const options = useSelector(state => state.categories.question_category);
 
-    const [categories, setCategories] = useState("")
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -26,7 +24,7 @@ const Settings = () => {
 
     return (
     <>
-    
+
     </>
     )
 }

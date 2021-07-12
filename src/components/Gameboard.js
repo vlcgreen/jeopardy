@@ -1,24 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {updateScore} from '../actions/categoryActions'
+
 
 
 const Gameboard = () => {
 
   const categories = useSelector(state => state.categories.selected_categories)
+  const allCategories = useSelector(state => state.categories.question_category)
+  const score = useSelector(state => state.categories.score)
 
-  const [score, setScore] = useState(0);
   const [clues, setClues] = useState([])
+  const dispatch = useDispatch();
 
   useEffect(() => {
   const handleFetch = () => {
     categories.map( categoryID => {
       let url = `https://jservice.io/api/category?id=${categoryID}`
-      let thisData = [{title: '', clues: []}]
+
       fetch(url)
       .then(res => res.json())
       .then((result) => {
         console.log(result.clues)
-        result.clues.forEach(clue => {
+        result.clues.splice(0,5).forEach(clue => {
           setClues(clues=>[...clues, clue])
         });
       })
@@ -28,46 +32,57 @@ const Gameboard = () => {
 }, []);
 
 console.log(clues)
+const titledCategories = []
+categories.forEach(cat => {
+  allCategories.find(each => {
+    if(each.id == cat){
+      titledCategories.push(each.title)
+    }
+  })
+})
+
+var timesClicked = 0
+
+let handleClick = (e) =>{
+  timesClicked++
+
+    if(timesClicked%2==0){
+    let userAnswer = window.prompt(`Enter answer:`, "")
+      let answer = e.target.value
+    if (userAnswer.toLowerCase() == answer.toLowerCase()) {
+      alert("Correct");
+      dispatch(updateScore(100))
+    }
+    else {
+      alert("Sorry. Incorrect")
+
+    }
+  }
+  else{
+    e.target.classList.toggle("flipped");
+    console.log(e.target.value)
+  }
+  }
+
+
+
 
   return (
     
     <>
+       <header class="top-header">
+      <h1>Jeopardy Game</h1>
+      <p class="score">Score <span class="score-count">{score}</span></p>
+   </header>
     <div className="titleWrap">
-    {categories.map(each=>(<div className="titleEach">{each}</div>))}
+    {titledCategories.map(each=>(<span className="titleEach">{each}</span>))}
     </div>
       <div className="wrapper"> 
-         {clues.map(col => (<div className="box">
-                      <div className="row">{col.value}</div>
-        </div>))}
+         {clues.map(col => (<button className="box" id="card"  value={col.answer} onClick={handleClick}>
+                      <figure className="row front">{col.value}</figure>
+                      <figure className="back">{col.question}</figure>
+        </button>))}
       </div>
-
-{/* <div className="wrapper">
-<div className="box box1">1</div>
-<div className="box box1">2</div>
-<div className="box box1">3</div>
-<div className="box box1">4</div>
-<div className="box box1">5</div>
-<div className="box box1">6</div>
-<div className="box box1">7</div>
-<div className="box box1">8</div>
-<div className="box box1">9</div>
-<div className="box box1">10</div>
-<div className="box box1">11</div>
-<div className="box box1">12</div>
-<div className="box box1">13</div>
-<div className="box box1">14</div>
-<div className="box box1">15</div>
-<div className="box box1">16</div>
-<div className="box box1">17</div>
-<div className="box box1">18</div>
-<div className="box box1">19</div>
-<div className="box box1">20</div>
-<div className="box box1">21</div>
-<div className="box box1">22</div>
-<div className="box box1">23</div>
-<div className="box box1">24</div>
-<div className="box box1">25</div>
-</div> */}
 
     </>
   )

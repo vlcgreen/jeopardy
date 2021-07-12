@@ -1,3 +1,4 @@
 
 export const SET_CATEGORY = "SET_CATEGORY"
 export const UPDATE_SELECTED = "UPDATE_SELECTED"
+export const UPDATE_SCORE = "UPDATE_SCORE"

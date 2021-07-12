@@ -6,8 +6,6 @@ import {createStore} from 'redux'
 import {Provider} from 'react-redux';
 import BaseLayout from './components/layout/BaseLayout';
 import reducer from './reducers'
-import Hooks from './components/Hooks'
-import Classes from './components/Classes'
 import Categories from './components/Categories'
 import Gameboard from './components/Gameboard'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -51,7 +49,7 @@ ReactDOM.render(
       <Router>
         <BaseLayout>
         <Switch>
-          <Route exact path="/" component={App} />
+          <Route exact path="/" component={Categories} />
           <Route path="/gamesettings" component={Categories} />
           <Route path="/game" component={Gameboard} />
         </Switch>
